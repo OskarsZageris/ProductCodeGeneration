@@ -1,0 +1,22 @@
+{%extends "layout.html"%}
+{%block content%}
+<a href="/">Back</a>
+<div>
+    <h1> {{product}} </h1>
+</div>
+<form method="post" action="/code">
+    {% for selectOption in selectOptions %}
+    <input type="hidden" name="{{selectOption.code}}" value="{{selectOption.code}}"/>
+    <div>
+        <label for="{{selectOption.code}}">{{selectOption.description}}: </label>
+        <select name="{{selectOption.code}}" id="{{selectOption.code}}">
+            {% for value in selectOption.options %}
+            <option value="{{value.code}}"> {{value.description}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    {% endfor %}
+    <input type="hidden" name="code" value="{{code}}"/>
+    <button type="submit">Submit</button>
+</form>
+{%endblock%}

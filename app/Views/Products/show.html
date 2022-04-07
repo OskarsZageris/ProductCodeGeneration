@@ -1,0 +1,13 @@
+{%extends "layout.html"%}
+{%block content%}
+<h1>Select product</h1>
+<form method="post" action="/select">
+    <label for="product">Options: </label>
+    <select name="product" id="product">
+        {% for item in items %}
+        <option> {{item.description}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Select</button>
+</form>
+{%endblock%}
